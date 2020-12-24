@@ -5,6 +5,7 @@ import socket
 import os
 import time
 from banner import banner
+from utils import cloudflare
 
 try:
     from colorama import Fore
@@ -59,29 +60,36 @@ except:
     )
 
 # ---------------------------
-try:
-    banner.Banner()
-    banner.infolist1()
-   
+while True:
+    try:
+        banner.Banner()
+        banner.infolist1()
+    
 
-    number = input(
-        Fore.RED
-        + "***"
-        + Fore.LIGHTGREEN_EX
-        + "Dark Cheetah"
-        + Fore.BLUE
-        + "~"
-        + Fore.WHITE
-        + "@HOME"
-        + Fore.RED
-        + "***"
-        + Fore.WHITE
-        + ">>:"
-    )
+        number = input(
+            Fore.RED
+            + "***"
+            + Fore.LIGHTGREEN_EX
+            + "Dark Cheetah"
+            + Fore.BLUE
+            + "~"
+            + Fore.WHITE
+            + "@HOME"
+            + Fore.RED
+            + "***"
+            + Fore.WHITE
+            + ">>:"
+        ).lower()
 
-except:
-    print("\n good by!")
-    sys.exit()
-if number == "0":
-    print("goodby!")
-    sys.exit()
+    except:
+        print("\n good by!")
+        sys.exit()
+    if number == "0":
+        print("goodby!")
+        sys.exit()
+    elif number == "":
+        print(Fore.RED+" [!]"+Fore.BLUE+" Please Enter Number :))))")
+        input("")
+    elif number=="1":
+        cloudflare.__start__()
+        
